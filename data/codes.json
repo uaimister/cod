@@ -1,0 +1,598 @@
+{
+  "Material": [
+    {
+      "nome": "Abaixador de Língua (100 Unidades)",
+      "qrcode": "00002430045",
+      "cod": "18587"
+    },
+    {
+      "nome": "Acetona Frasco C/100ml",
+      "qrcode": "00002430061",
+      "cod": "92062"
+    },
+    {
+      "nome": "Água Destilada 500ml Frasco",
+      "qrcode": "00002407140",
+      "cod": "41235"
+    },
+    {
+      "nome": "Água Oxigenada 100ml",
+      "qrcode": "00002430070",
+      "cod": "90905"
+    },
+    {
+      "nome": "Agulha Descartável 13x4",
+      "qrcode": "00002430088",
+      "cod": "35828"
+    },
+    {
+      "nome": "Agulha Descartável 25x6,0",
+      "qrcode": "00002430096",
+      "cod": "15553"
+    },
+    {
+      "nome": "Agulha Descartável 30x8,0",
+      "qrcode": "00002430100",
+      "cod": "96868"
+    },
+    {
+      "nome": "Agulha Descartável 40x12",
+      "qrcode": "00002430118",
+      "cod": "51967"
+    },
+    {
+      "nome": "Agulha Perican Peridural 18G",
+      "qrcode": "00002430134",
+      "cod": "58753"
+    },
+    {
+      "nome": "Agulha Spinal Raqui N°22 Descartável",
+      "qrcode": "00002430142",
+      "cod": "78206"
+    },
+    {
+      "nome": "Agulha Spinal Raqui N°25 Descartável",
+      "qrcode": "00002444119",
+      "cod": "63483"
+    },
+    {
+      "nome": "Agulha Spinal Raqui N°27 Descartável",
+      "qrcode": "00002430169",
+      "cod": "40264"
+    },
+    {
+      "nome": "Álcool 70% Frasco 100ml",
+      "qrcode": "00002430177",
+      "cod": "52043"
+    },
+    {
+      "nome": "Álcool 70% Sachê (Álcool Swab)",
+      "qrcode": "00002444941",
+      "cod": "27582"
+    },
+    {
+      "nome": "Álcool 70% Sachê ( Álcool Swab )",
+      "qrcode": "00002434113",
+      "cod": "77456"
+    },
+    {
+      "nome": "Algodão Hidrofilo Rolo 500g",
+      "qrcode": "00002430193",
+      "cod": "56287"
+    },
+    {
+      "nome": "Amniótomo Descartável (Rompedor de Bolsa)",
+      "qrcode": "00002430207",
+      "cod": "82722"
+    },
+    {
+      "nome": "Aparelho de Tricotomia",
+      "qrcode": "00002430215",
+      "cod": "60265"
+    },
+    {
+      "nome": "Atadura Crepom 10cm x 1,8m",
+      "qrcode": "00002430339",
+      "cod": "90811"
+    },
+    {
+      "nome": "Atadura Crepom 15cm x 1,8m",
+      "qrcode": "00002430347",
+      "cod": "70496"
+    },
+    {
+      "nome": "Atadura Crepom 20cm x 1,8m",
+      "qrcode": "00002430355",
+      "cod": "58798"
+    },
+    {
+      "nome": "Atadura Crepom 6cm x 1,8m",
+      "qrcode": "00002430363",
+      "cod": "73517"
+    },
+    {
+      "nome": "Atadura Gessada 10cm x 3m",
+      "qrcode": "00002430371",
+      "cod": "55918"
+    },
+    {
+      "nome": "Atadura Gessada 15cm x 3m",
+      "qrcode": "00002430380",
+      "cod": "25226"
+    },
+    {
+      "nome": "Atadura Gessada 20cm x 4m",
+      "qrcode": "00002430398",
+      "cod": "47096"
+    },
+    {
+      "nome": "Atadura Ortopédica 10cm x 1,8m",
+      "qrcode": "00002430401",
+      "cod": "42963"
+    },
+    {
+      "nome": "Atadura Ortopédica 15cm x 1,8m",
+      "qrcode": "00002430410",
+      "cod": "71786"
+    },
+    {
+      "nome": "Atadura Ortopédica 20cm x 1,8m",
+      "qrcode": "00002430428",
+      "cod": "15103"
+    },
+    {
+      "nome": "Atadura Ortopedica 10cm X 1,8m",
+      "qrcode": "00002434717",
+      "cod": "43325"
+    },
+    {
+      "nome": "Atadura Ortopedica 15cm X 1,8m",
+      "qrcode": "00002443350",
+      "cod": "66660"
+    },
+    {
+      "nome": "Bolsa de Colostomia (Karaya) 19mm/64mm",
+      "qrcode": "00002430436",
+      "cod": "18682"
+    },
+    {
+      "nome": "Canula de Traqueostomia N°6,0 C/Balão",
+      "qrcode": "00002430460",
+      "cod": "24709"
+    },
+    {
+      "nome": "Canula de Traqueostomia N°6,5 C/Balão",
+      "qrcode": "00002430487",
+      "cod": "12645"
+    },
+    {
+      "nome": "Canula de Traqueostomia N°7,0 C/Balão",
+      "qrcode": "00002430479",
+      "cod": "30714"
+    },
+    {
+      "nome": "Canula de Traqueostomia N°7,5 C/Balão",
+      "qrcode": "00002430517",
+      "cod": "66370"
+    },
+    {
+      "nome": "Canula de Traqueostomia N°8,0 C/Balão",
+      "qrcode": "00002430495",
+      "cod": "82838"
+    },
+    {
+      "nome": "Cardaço N.10 ( 1cm C/ 10 mT )",
+      "qrcode": "00002250829",
+      "cod": "88957"
+    },
+    {
+      "nome": "Clip Para Bolsa de Colostomia (Karaya)",
+      "qrcode": "00002437767",
+      "cod": "39603"
+    },
+    {
+      "nome": "Coletor De Material Perfurocortante 20 Litros (AMARELO)",
+      "qrcode": "00002443902",
+      "cod": "92587"
+    },
+    {
+      "nome": "Coletor De Material Perfurocortante 20 Litros (LARANJA)",
+      "qrcode": "00002431602",
+      "cod": "46341"
+    },
+    {
+      "nome": "Coletor de Urina Sistema Aberto",
+      "qrcode": "00002422506",
+      "cod": "67613"
+    },
+    {
+      "nome": "Detergente Enzimatico Neutro",
+      "qrcode": "00002444330",
+      "cod": "82121"
+    },
+    {
+      "nome": "Dialisador Alto Fluxo",
+      "qrcode": "00002420783",
+      "cod": "49125"
+    },
+    {
+      "nome": "Eletrodo Descartável Adulto/Infantil",
+      "qrcode": "00002419510",
+      "cod": "37114"
+    },
+    {
+      "nome": "Eletrodo neonatal descartável",
+      "qrcode": "00002322005",
+      "cod": "77411"
+    },
+    {
+      "nome": "Equipo 7898283814260",
+      "qrcode": "7898283814260",
+      "cod": "53686"
+    },
+    {
+      "nome": "Equipo de Transfussão de sangue",
+      "qrcode": "00002409097",
+      "cod": "17975"
+    },
+    {
+      "nome": "Equipo Macrogotas",
+      "qrcode": "7898283818626",
+      "cod": "61548"
+    },
+    {
+      "nome": "Escova Assepsia",
+      "qrcode": "7897780206875",
+      "cod": "80787"
+    },
+    {
+      "nome": "Esparadrapo 10cmX4,5m (4500cm)",
+      "qrcode": "00002439859",
+      "cod": "21514"
+    },
+    {
+      "nome": "Fita de HGT - ACCU-CHEK",
+      "qrcode": "00002423340",
+      "cod": "84271"
+    },
+    {
+      "nome": "Fita Hospitalar Branca",
+      "qrcode": "00002439930",
+      "cod": "13516"
+    },
+    {
+      "nome": "Fita Micropore 5,0 com X 10m",
+      "qrcode": "00002435551",
+      "cod": "23037"
+    },
+    {
+      "nome": "Frasco Nutrição Enteral 300ml",
+      "qrcode": "00002443074",
+      "cod": "86346"
+    },
+    {
+      "nome": "Gaze Estéril 10x10cm",
+      "qrcode": "00002435683",
+      "cod": "97830"
+    },
+    {
+      "nome": "Gaze Estéril 7,5x7,5cm",
+      "qrcode": "00002412101",
+      "cod": "27160"
+    },
+    {
+      "nome": "Gel Para Ultrassom",
+      "qrcode": "00002440482",
+      "cod": "10232"
+    },
+    {
+      "nome": "Integrador Quimico Tipo 5 Ref: 1243",
+      "qrcode": "00002444100",
+      "cod": "16322"
+    },
+    {
+      "nome": "IV Fix Fixador Estéril",
+      "qrcode": "7891040118151",
+      "cod": "92002"
+    },
+    {
+      "nome": "Kit Transdutor de Pressão Invasiva",
+      "qrcode": "00002445204",
+      "cod": "57758"
+    },
+    {
+      "nome": "Lanceta para HGT C/ DISPOSITIVO DE SEGURANÇA",
+      "qrcode": "00002444216",
+      "cod": "79311"
+    },
+    {
+      "nome": "Lencçol Descartavel Com Elastico",
+      "qrcode": "00002432595",
+      "cod": "89015"
+    },
+    {
+      "nome": "Linha do Paciente Válvula Anti-Refluxo",
+      "qrcode": "00002426870",
+      "cod": "73460"
+    },
+    {
+      "nome": "Luva Cirugica 7.5",
+      "qrcode": "7896098801062",
+      "cod": "98646"
+    },
+    {
+      "nome": "Luva de Procedimento G",
+      "qrcode": "00002434369",
+      "cod": "36973"
+    },
+    {
+      "nome": "Luva de Procedimento M",
+      "qrcode": "00002434016",
+      "cod": "76408"
+    },
+    {
+      "nome": "Luva de Procedimento P",
+      "qrcode": "00002429241",
+      "cod": "86606"
+    },
+    {
+      "nome": "Luva de Vinil G sem pó",
+      "qrcode": "00002434741",
+      "cod": "87596"
+    },
+    {
+      "nome": "Luva de Vinil M sem pó",
+      "qrcode": "00002434733",
+      "cod": "10823"
+    },
+    {
+      "nome": "Malha Tubular 10cm",
+      "qrcode": "00002444186",
+      "cod": "11742"
+    },
+    {
+      "nome": "Malha Tubular 15cm",
+      "qrcode": "00002443120",
+      "cod": "66110"
+    },
+    {
+      "nome": "Manta P/ Esterilização x 900mm",
+      "qrcode": "00002443023",
+      "cod": "67425"
+    },
+    {
+      "nome": "Manta Termica Cirurgica ( Corpo Inteiro )",
+      "qrcode": "00002417405",
+      "cod": "30213"
+    },
+    {
+      "nome": "Mascara Tripla Descartável Branca C/ Elastico",
+      "qrcode": "00002435608",
+      "cod": "12968"
+    },
+    {
+      "nome": "Mata P/ Esterilização 1,20 x 1,20",
+      "qrcode": "00002443139",
+      "cod": "79190"
+    },
+    {
+      "nome": "Oralpack Descartável 3ml",
+      "qrcode": "00002435055",
+      "cod": "61419"
+    },
+    {
+      "nome": "Oralpak Descartável 20ml",
+      "qrcode": "00002444089",
+      "cod": "34424"
+    },
+    {
+      "nome": "Oralpak Descatavel 3ml",
+      "qrcode": "00002444070",
+      "cod": "62624"
+    },
+    {
+      "nome": "Papel para Cardioversor Nihon Kohden RQ",
+      "qrcode": "00002359472",
+      "cod": "50541"
+    },
+    {
+      "nome": "Placa de Eletro Cautério Universal",
+      "qrcode": "00002419610",
+      "cod": "22832"
+    },
+    {
+      "nome": "Preservativo Não lubrificado",
+      "qrcode": "00002422310",
+      "cod": "24361"
+    },
+    {
+      "nome": "Seringa para bomba injetora",
+      "qrcode": "00002448211",
+      "cod": "77926"
+    },
+    {
+      "nome": "Set de linhas de sangue arterial e venos",
+      "qrcode": "00002425793",
+      "cod": "86414"
+    },
+    {
+      "nome": "Sonda Aspiração N°14 Traqueal",
+      "qrcode": "00002343967",
+      "cod": "59246"
+    },
+    {
+      "nome": "Sonda foley 2 vias N 18",
+      "qrcode": "00002443988",
+      "cod": "62219"
+    },
+    {
+      "nome": "Sonda Uretral N°08",
+      "qrcode": "00002385961",
+      "cod": "17283"
+    },
+    {
+      "nome": "Sonda uretal N 12",
+      "qrcode": "00002389258",
+      "cod": "90728"
+    },
+    {
+      "nome": "Tela Metálica 19x1 80mm",
+      "qrcode": "00002278596",
+      "cod": "37261"
+    },
+    {
+      "nome": "Teste de Detecção de Proteina - Hemocheck",
+      "qrcode": "00002443716",
+      "cod": "68046"
+    },
+    {
+      "nome": "Teste Desafio Biologico Ref: 41382 Pacote",
+      "qrcode": "00002426714",
+      "cod": "70388"
+    },
+    {
+      "nome": "Teste Desafio Ref?: 1233 (bowie Dick)",
+      "qrcode": "00002444143",
+      "cod": "22816"
+    },
+    {
+      "nome": "Touca Descartável Com Elástico",
+      "qrcode": "00002435756",
+      "cod": "73273"
+    },
+    {
+      "nome": "Touca Descartavel Com Elastico",
+      "qrcode": "00002444160",
+      "cod": "16560"
+    },
+    {
+      "nome": "Tubo N°5,0 Endotraqueal S/Balão",
+      "qrcode": "00002269546",
+      "cod": "93957"
+    },
+    {
+      "nome": "Tubo N°5,5 Endotraqueal C/Balão",
+      "qrcode": "00002426404",
+      "cod": "61606"
+    },
+    {
+      "nome": "Tubo N 7,0 Endotraqueal C/ balão",
+      "qrcode": "00002443473",
+      "cod": "46704"
+    }
+  ],
+  "Medicamento": [
+    {
+      "nome": "Insulina Nph Normal Humana",
+      "qrcode": "00002442736",
+      "cod": "90747"
+    },
+    {
+      "nome": "Lactulose 667mg/ml (Xarope)",
+      "qrcode": "00002424002",
+      "cod": "42037"
+    },
+    {
+      "nome": "Lactulose 667mg/ml xarope",
+      "qrcode": "00002444488",
+      "cod": "42037"
+    },
+    {
+      "nome": "Metronidazol 500mg IV Bolsa 100ml",
+      "qrcode": "00002440350",
+      "cod": "82430"
+    },
+    {
+      "nome": "Óleo Mineral Purificado",
+      "qrcode": "00002403285",
+      "cod": "13688"
+    }
+  ],
+  "Soros": [
+    {
+      "nome": "Agua Destilada 500mL.",
+      "qrcode": "00002407140",
+      "cod": "88785"
+    },
+    {
+      "nome": "Bicarbonato de Sódio 8,4% Frasco 5L",
+      "qrcode": "00002395606",
+      "cod": "15336"
+    },
+    {
+      "nome": "Bicarbonato de Sódio 8,4% Frasco C/250ml",
+      "qrcode": "00002402785",
+      "cod": "41990"
+    },
+    {
+      "nome": "Cloreto de Sódio + Cloreto de Potássio",
+      "qrcode": "00002399164",
+      "cod": "23048"
+    },
+    {
+      "nome": "Manitol Solução 20% Frasco 250ml",
+      "qrcode": "00002404982",
+      "cod": "64322"
+    },
+    {
+      "nome": "Soro Fisiológico 0,9% 10ml Ampola",
+      "qrcode": "00002427680",
+      "cod": "54466"
+    },
+    {
+      "nome": "Soro Fisiológico 0,9% 100ml Frasco",
+      "qrcode": "00002426870",
+      "cod": "28348"
+    },
+    {
+      "nome": "Soro Fisiológico 0,9% 1000ml Frasco",
+      "qrcode": "00002429756",
+      "cod": "45177"
+    },
+    {
+      "nome": "Soro Fisiológico 0,9% 250ml Frasco",
+      "qrcode": "00002427370",
+      "cod": "58517"
+    },
+    {
+      "nome": "Soro Fisiológico 0,9% 500ml Frasco",
+      "qrcode": "00002427362",
+      "cod": "27857"
+    },
+    {
+      "nome": "Soro Glicofisiológico 500ml Frasco",
+      "qrcode": "00002411229",
+      "cod": "32388"
+    },
+    {
+      "nome": "Soro Glicosado 10% 250ml Frasco",
+      "qrcode": "00002414333",
+      "cod": "60117"
+    },
+    {
+      "nome": "Soro Glicosado 5% 100ml Frasco",
+      "qrcode": "00002419572",
+      "cod": "15248"
+    },
+    {
+      "nome": "Soro Glicosado 5% 1000ml Frasco",
+      "qrcode": "00002419165",
+      "cod": "68871"
+    },
+    {
+      "nome": "Soro Glicosado 5% 250ml Frasco",
+      "qrcode": "00002419564",
+      "cod": "57905"
+    },
+    {
+      "nome": "Soro Glicosado 5% 500ml Frasco",
+      "qrcode": "00002419173",
+      "cod": "76792"
+    },
+    {
+      "nome": "Soro Ringer Com Lactato 500ml Frasco",
+      "qrcode": "00002422220",
+      "cod": "57585"
+    }
+  ]
+}
