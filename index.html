@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Busca de Códigos Médicos</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+background: linear-gradient(135deg, #141525 0%, #1a1b3d 100%);
+min-height: 100vh;
+color: #ffffff;
+padding: 20px;
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+}
+
+header {
+text-align: center;
+margin-bottom: 40px;
+padding: 30px 0;
+}
+
+h1 {
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 10px;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.actions {
+display: flex;
+gap: 10px;
+justify-content: center;
+margin-top: 20px;
+flex-wrap: wrap;
+}
+
+.btn {
+padding: 12px 24px;
+border: none;
+border-radius: 8px;
+font-size: 0.95rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.btn-primary {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: white;
+}
+
+.btn-secondary {
+background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+color: white;
+}
+
+.btn-danger {
+background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+color: white;
+}
+
+.btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.search-container {
+position: sticky;
+top: 20px;
+z-index: 100;
+margin-bottom: 30px;
+}
+
+.search-box {
+position: relative;
+max-width: 600px;
+margin: 0 auto;
+}
+
+#searchInput {
+width: 100%;
+padding: 16px 20px;
+font-size: 1rem;
+border: 2px solid #667eea;
+border-radius: 12px;
+background: rgba(255, 255, 255, 0.1);
+color: #ffffff;
+outline: none;
+transition: all 0.3s ease;
+}
+
+#searchInput::placeholder {
+color: rgba(255, 255, 255, 0.5);
+}
+
+#searchInput:focus {
+background: rgba(255, 255, 255, 0.15);
+border-color: #764ba2;
+box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+#results {
+display: none;
+max-width: 900px;
+margin: 12px auto 0;
+background: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 16px;
+backdrop-filter: blur(10px);
+overflow: hidden;
+}
+
+#results.show {
+display: block;
+}
+
+.category {
+margin-bottom: 50px;
+background: rgba(255, 255, 255, 0.05);
+border-radius: 16px;
+padding: 30px;
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+transition: all 0.3s ease;
+}
+
+.category h2 {
+font-size: 1.8rem;
+margin-bottom: 20px;
+color: #667eea;
+}
+
+.table-container {
+overflow-x: auto;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+thead {
+background: rgba(102, 126, 234, 0.2);
+}
+
+th {
+padding: 14px;
+text-align: left;
+font-weight: 600;
+font-size: 0.95rem;
+color: #ffffff;
+border-bottom: 2px solid #667eea;
+}
+
+td {
+padding: 14px;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+tr {
+transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+background: rgba(102, 126, 234, 0.1);
+}
+
+.item-row {
+display: none;
+}
+
+.item-row.visible {
+display: table-row;
+}
+
+.item-row.highlight {
+background: rgba(102, 126, 234, 0.3);
+}
+
+.item-row.selected {
+background: rgba(102, 126, 234, 0.5);
+}
+
+.code-cell {
+font-family: 'Courier New', monospace;
+color: #a8b2ff;
+}
+
+.copy-btn {
+padding: 8px;
+width: 38px;
+height: 38px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.copy-btn svg {
+width: 18px;
+height: 18px;
+fill: currentColor;
+}
+
+.copy-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.copy-btn:active {
+transform: translateY(0);
+}
+
+.copy-btn.copied {
+background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+}
+
+.no-results {
+text-align: center;
+padding: 40px;
+color: rgba(255, 255, 255, 0.6);
+font-size: 1.1rem;
+display: none;
+}
+
+.no-results.show {
+display: block;
+}
+
+.modal {
+display: none;
+position: fixed;
+z-index: 1000;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.8);
+backdrop-filter: blur(5px);
+}
+
+.modal.show {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.modal-content {
+background: linear-gradient(135deg, #1a1b3d 0%, #141525 100%);
+border: 2px solid #667eea;
+border-radius: 16px;
+padding: 30px;
+max-width: 500px;
+width: 90%;
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+margin-bottom: 20px;
+}
+
+.modal-header h2 {
+font-size: 1.5rem;
+color: #667eea;
+}
+
+.modal-body {
+margin-bottom: 20px;
+}
+
+.form-group {
+margin-bottom: 15px;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 5px;
+color: rgba(255, 255, 255, 0.8);
+font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+width: 100%;
+padding: 12px;
+border: 1px solid #667eea;
+border-radius: 8px;
+background: rgba(255, 255, 255, 0.1);
+color: #ffffff;
+font-size: 1rem;
+outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+border-color: #764ba2;
+background: rgba(255, 255, 255, 0.15);
+}
+
+.form-group select option {
+background: #1a1b3d;
+color: #ffffff;
+}
+
+.modal-footer {
+display: flex;
+gap: 10px;
+justify-content: flex-end;
+}
+
+.qrcode-display {
+font-size: 2rem;
+text-align: center;
+padding: 30px;
+font-family: 'Courier New', monospace;
+color: #a8b2ff;
+background: rgba(102, 126, 234, 0.1);
+border-radius: 8px;
+word-break: break-all;
+}
+
+@media (max-width: 768px) {
+h1 {
+font-size: 1.8rem;
+}
+
+.category {
+padding: 20px;
+}
+
+.category h2 {
+font-size: 1.4rem;
+}
+
+table {
+font-size: 0.85rem;
+}
+
+th, td {
+padding: 10px 8px;
+}
+
+.copy-btn {
+padding: 6px;
+width: 34px;
+height: 34px;
+}
+}
+
+@media (max-width: 480px) {
+body {
+padding: 10px;
+}
+
+th:first-child, td:first-child {
+min-width: 180px;
+}
+
+.code-cell {
+font-size: 0.75rem;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<header>
+<h1>Sistema de Busca de Códigos</h1>
+<div class="actions">
+<button class="btn btn-primary" onclick="openAddModal()">Adicionar</button>
+<button class="btn btn-secondary" onclick="openEditModal()">Editar</button>
+<button class="btn btn-danger" onclick="openDeleteModal()">Remover</button>
+</div>
+</header>
+
+<div class="search-container">
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Digite pelo menos 2 letras para buscar...">
+</div>
+<div id="results">
+<div id="content"></div>
+<div class="no-results" id="noResults">Nenhum resultado encontrado</div>
+</div>
+</div>
+</div>
+
+<div id="addModal" class="modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>Adicionar Item</h2>
+</div>
+<div class="modal-body">
+<div class="form-group">
+<label>Código</label>
+<input type="text" id="addCod">
+</div>
+<div class="form-group">
+<label>Nome</label>
+<input type="text" id="addNome">
+</div>
+<div class="form-group">
+<label>QRCode</label>
+<input type="text" id="addQrcode">
+</div>
+<div class="form-group">
+<label>Tipo</label>
+<select id="addTipo">
+<option value="Material">Material</option>
+<option value="Medicamento">Medicamento</option>
+<option value="Soros">Soros</option>
+</select>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" onclick="closeModal('addModal')">Cancelar</button>
+<button class="btn btn-primary" onclick="addItem()">Adicionar</button>
+</div>
+</div>
+</div>
+
+<div id="editModal" class="modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>Editar Item</h2>
+</div>
+<div class="modal-body">
+<div class="form-group">
+<label>Buscar</label>
+<input type="text" id="editSearch" oninput="filterEditSelect()" placeholder="Filtrar itens...">
+</div>
+<div class="form-group">
+<label>Selecione o Item</label>
+<select id="editSelect" onchange="loadEditItem()">
+<option value="">-- Selecione --</option>
+</select>
+</div>
+<div id="editFields" style="display:none;">
+<div class="form-group">
+<label>Código</label>
+<input type="text" id="editCod">
+</div>
+<div class="form-group">
+<label>Nome</label>
+<input type="text" id="editNome">
+</div>
+<div class="form-group">
+<label>QRCode</label>
+<input type="text" id="editQrcode">
+</div>
+<div class="form-group">
+<label>Tipo</label>
+<select id="editTipo">
+<option value="Material">Material</option>
+<option value="Medicamento">Medicamento</option>
+<option value="Soros">Soros</option>
+</select>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" onclick="closeModal('editModal')">Cancelar</button>
+<button class="btn btn-primary" onclick="editItem()">Salvar</button>
+</div>
+</div>
+</div>
+
+<div id="deleteModal" class="modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>Remover Item</h2>
+</div>
+<div class="modal-body">
+<div class="form-group">
+<label>Buscar</label>
+<input type="text" id="deleteSearch" oninput="filterDeleteSelect()" placeholder="Filtrar itens...">
+</div>
+<div class="form-group">
+<label>Selecione o Item para Remover</label>
+<select id="deleteSelect">
+<option value="">-- Selecione --</option>
+</select>
+</div>
+<p style="color: rgba(255, 255, 255, 0.7); margin-top: 10px;">Tem certeza que deseja remover este item?</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" onclick="closeModal('deleteModal')">Cancelar</button>
+<button class="btn btn-danger" onclick="deleteItem()">Remover</button>
+</div>
+</div>
+</div>
+
+<div id="qrcodeModal" class="modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>QRCode</h2>
+</div>
+<div class="modal-body">
+<div class="qrcode-display" id="qrcodeDisplay"></div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-primary" onclick="closeModal('qrcodeModal')">Fechar</button>
+</div>
+</div>
+</div>
+
+<script>
+const STORAGE_KEY = 'caf_data';
+const JSON_URL = 'data/codes.json';
+
+let data = {};
+let categoryEls = {};
+let selectedIndex = -1;
+let visibleRows = [];
+
+async function loadData() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+        data = JSON.parse(stored);
+        prepareData();
+        sortData();
+        renderCategories();
+        populateSelects();
+        return;
+    }
+
+    try {
+        const response = await fetch(JSON_URL);
+        data = await response.json();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (err) {
+        data = {"Material": [], "Medicamento": [], "Soros": []};
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+    prepareData();
+    sortData();
+    renderCategories();
+    populateSelects();
+}
+
+function saveData() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function normalizeText(text) {
+    return String(text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function prepareData() {
+    Object.keys(data).forEach(category => {
+        data[category].forEach(item => {
+            item._nomeNorm = normalizeText(item.nome);
+            item._codNorm = normalizeText(item.cod || '');
+            item._qrcodeNorm = normalizeText(item.qrcode || '');
+            item._row = null;
+            item._category = category;
+        });
+    });
+}
+
+function sortData() {
+    Object.keys(data).forEach(category => {
+        data[category].sort((a, b) => normalizeText(a.nome).localeCompare(normalizeText(b.nome)));
+    });
+}
+
+function renderCategories() {
+    const content = document.getElementById('content');
+    content.innerHTML = '';
+    categoryEls = {};
+    Object.keys(data).forEach(category => {
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'category';
+        categoryDiv.setAttribute('data-category', category);
+        categoryDiv.innerHTML = `
+            <h2>${category}</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cód</th>
+                            <th>Nome</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="${category}-tbody"></tbody>
+                </table>
+            </div>
+        `;
+        content.appendChild(categoryDiv);
+        categoryEls[category] = categoryDiv;
+
+        const tbody = document.getElementById(`${category}-tbody`);
+        data[category].forEach((item, index) => {
+            const row = document.createElement('tr');
+            row.className = 'item-row';
+            row.setAttribute('data-category', category);
+            row.setAttribute('data-index', index);
+            row.setAttribute('data-qrcode', item.qrcode || '');
+            item._row = row;
+            row.innerHTML = `
+                <td class="code-cell">${item.cod || ''}</td>
+                <td>${item.nome}</td>
+                <td><button class="copy-btn" type="button" data-code="${item.cod || ''}"><svg viewBox="0 0 24 24"><path d="M16 1H6a2 2 0 0 0-2 2v12h2V3h10V1zm3 4H10a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16h-9V7h9v14z"/></svg></button></td>
+            `;
+            tbody.appendChild(row);
+
+            row.addEventListener('dblclick', function() {
+                const qrcode = this.getAttribute('data-qrcode');
+                if (qrcode) {
+                    showQRCode(qrcode);
+                }
+            });
+        });
+    });
+}
+
+function showQRCode(qrcode) {
+    document.getElementById('qrcodeDisplay').textContent = qrcode;
+    openModal('qrcodeModal');
+}
+
+function populateSelects() {
+    const editSelect = document.getElementById('editSelect');
+    const deleteSelect = document.getElementById('deleteSelect');
+    editSelect.innerHTML = '<option value="">-- Selecione --</option>';
+    deleteSelect.innerHTML = '<option value="">-- Selecione --</option>';
+
+    Object.keys(data).forEach(category => {
+        data[category].forEach((item, index) => {
+            const optionValue = JSON.stringify({category, index, nome: item.nome, cod: item.cod || '', qrcode: item.qrcode || ''});
+            const optionText = `[${category}] ${item.cod || ''} - ${item.nome}`;
+
+            const editOption = document.createElement('option');
+            editOption.value = optionValue;
+            editOption.textContent = optionText;
+            editOption.setAttribute('data-search', normalizeText(optionText + ' ' + (item.qrcode || '')));
+            editSelect.appendChild(editOption);
+
+            const deleteOption = document.createElement('option');
+            deleteOption.value = optionValue;
+            deleteOption.textContent = optionText;
+            deleteOption.setAttribute('data-search', normalizeText(optionText + ' ' + (item.qrcode || '')));
+            deleteSelect.appendChild(deleteOption);
+        });
+    });
+}
+
+function filterEditSelect() {
+    const searchValue = normalizeText(document.getElementById('editSearch').value);
+    const select = document.getElementById('editSelect');
+    const options = select.querySelectorAll('option');
+
+    options.forEach(option => {
+        if (option.value === '') {
+            option.style.display = '';
+            return;
+        }
+        const searchText = option.getAttribute('data-search') || '';
+        if (searchText.includes(searchValue)) {
+            option.style.display = '';
+        } else {
+            option.style.display = 'none';
+        }
+    });
+}
+
+function filterDeleteSelect() {
+    const searchValue = normalizeText(document.getElementById('deleteSearch').value);
+    const select = document.getElementById('deleteSelect');
+    const options = select.querySelectorAll('option');
+
+    options.forEach(option => {
+        if (option.value === '') {
+            option.style.display = '';
+            return;
+        }
+        const searchText = option.getAttribute('data-search') || '';
+        if (searchText.includes(searchValue)) {
+            option.style.display = '';
+        } else {
+            option.style.display = 'none';
+        }
+    });
+}
+
+function copyCode(code, btn) {
+    if (!btn) return;
+    const done = () => {
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.classList.remove('copied');
+        }, 2000);
+    };
+
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        navigator.clipboard.writeText(code).then(done).catch(() => {
+            const ta = document.createElement('textarea');
+            ta.value = code;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            done();
+        });
+        return;
+    }
+
+    const ta = document.createElement('textarea');
+    ta.value = code;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    done();
+}
+
+function search(query) {
+    const normalizedQuery = normalizeText(query);
+    let hasResults = false;
+    selectedIndex = -1;
+    visibleRows = [];
+
+    if (query.length < 2) {
+        Object.keys(data).forEach(category => {
+            const categoryEl = categoryEls[category];
+            if (categoryEl) categoryEl.style.display = '';
+            data[category].forEach(item => {
+                if (item._row) item._row.classList.remove('visible', 'highlight', 'selected');
+            });
+        });
+        document.getElementById('noResults').classList.remove('show');
+        document.getElementById('results').classList.remove('show');
+        return;
+    }
+
+    const wasHidden = !document.getElementById('results').classList.contains('show');
+    document.getElementById('results').classList.add('show');
+    if (wasHidden) {
+        document.getElementById('results').scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
+
+    Object.keys(data).forEach(category => {
+        const categoryEl = categoryEls[category];
+        let categoryHasResults = false;
+
+        data[category].forEach((item, index) => {
+            const row = item._row;
+            const normalizedName = item._nomeNorm;
+            const normalizedCod = item._codNorm;
+            const normalizedQRCode = item._qrcodeNorm;
+
+            if (normalizedName.includes(normalizedQuery) || normalizedCod.includes(normalizedQuery) || normalizedQRCode.includes(normalizedQuery)) {
+                row.classList.add('visible', 'highlight');
+                row.classList.remove('selected');
+                categoryHasResults = true;
+                hasResults = true;
+                visibleRows.push(row);
+            } else {
+                row.classList.remove('visible', 'highlight', 'selected');
+            }
+        });
+        if (categoryEl) categoryEl.style.display = categoryHasResults ? '' : 'none';
+    });
+
+    if (hasResults) {
+        document.getElementById('noResults').classList.remove('show');
+    } else {
+        document.getElementById('noResults').classList.add('show');
+    }
+}
+
+function selectRow(direction) {
+    if (visibleRows.length === 0) return;
+
+    if (selectedIndex >= 0 && selectedIndex < visibleRows.length) {
+        visibleRows[selectedIndex].classList.remove('selected');
+    }
+
+    selectedIndex += direction;
+    if (selectedIndex < 0) selectedIndex = 0;
+    if (selectedIndex >= visibleRows.length) selectedIndex = visibleRows.length - 1;
+
+    const selectedRow = visibleRows[selectedIndex];
+    selectedRow.classList.add('selected');
+    selectedRow.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+
+document.getElementById('content').addEventListener('click', (e) => {
+    const btn = e.target.closest('.copy-btn');
+    if (!btn) return;
+    const code = btn.getAttribute('data-code') || '';
+    copyCode(code, btn);
+});
+
+let searchTimer;
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    const value = e.target.value;
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => search(value), 180);
+});
+
+document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+        e.preventDefault();
+        document.getElementById('searchInput').focus();
+    }
+
+    if (visibleRows.length > 0 && document.activeElement === document.getElementById('searchInput')) {
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            selectRow(1);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            selectRow(-1);
+        }
+    }
+});
+
+function openModal(modalId) {
+    document.getElementById(modalId).classList.add('show');
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).classList.remove('show');
+    if (modalId === 'editModal') {
+        document.getElementById('editFields').style.display = 'none';
+        document.getElementById('editSelect').value = '';
+        document.getElementById('editSearch').value = '';
+        filterEditSelect();
+    }
+    if (modalId === 'deleteModal') {
+        document.getElementById('deleteSelect').value = '';
+        document.getElementById('deleteSearch').value = '';
+        filterDeleteSelect();
+    }
+}
+
+function openAddModal() {
+    document.getElementById('addCod').value = '';
+    document.getElementById('addNome').value = '';
+    document.getElementById('addQrcode').value = '';
+    document.getElementById('addTipo').value = 'Material';
+    openModal('addModal');
+}
+
+function openEditModal() {
+    openModal('editModal');
+}
+
+function openDeleteModal() {
+    openModal('deleteModal');
+}
+
+function addItem() {
+    const cod = document.getElementById('addCod').value.trim();
+    const nome = document.getElementById('addNome').value.trim();
+    const qrcode = document.getElementById('addQrcode').value.trim();
+    const tipo = document.getElementById('addTipo').value;
+
+    if (!nome || !cod || !qrcode) {
+        alert('Preencha todos os campos');
+        return;
+    }
+
+    let duplicate = false;
+    Object.keys(data).forEach(category => {
+        data[category].forEach(item => {
+            if (item.cod === cod || item.qrcode === qrcode) {
+                duplicate = true;
+            }
+        });
+    });
+
+    if (duplicate) {
+        alert('Código ou QRCode já existe');
+        return;
+    }
+
+    if (!data[tipo]) {
+        data[tipo] = [];
+    }
+
+    data[tipo].push({ nome, cod, qrcode });
+    saveData();
+    closeModal('addModal');
+    prepareData();
+    sortData();
+    renderCategories();
+    populateSelects();
+}
+
+function loadEditItem() {
+    const selectValue = document.getElementById('editSelect').value;
+    if (!selectValue) {
+        document.getElementById('editFields').style.display = 'none';
+        return;
+    }
+
+    const item = JSON.parse(selectValue);
+    document.getElementById('editCod').value = item.cod || '';
+    document.getElementById('editNome').value = item.nome;
+    document.getElementById('editQrcode').value = item.qrcode || '';
+    document.getElementById('editTipo').value = item.category;
+    document.getElementById('editFields').style.display = 'block';
+}
+
+function editItem() {
+    const selectValue = document.getElementById('editSelect').value;
+    if (!selectValue) {
+        alert('Selecione um item');
+        return;
+    }
+
+    const oldItem = JSON.parse(selectValue);
+    const cod = document.getElementById('editCod').value.trim();
+    const nome = document.getElementById('editNome').value.trim();
+    const qrcode = document.getElementById('editQrcode').value.trim();
+    const tipo = document.getElementById('editTipo').value;
+
+    if (!nome || !cod || !qrcode) {
+        alert('Preencha todos os campos');
+        return;
+    }
+
+    let duplicate = false;
+    Object.keys(data).forEach(category => {
+        data[category].forEach((item, idx) => {
+            if (category === oldItem.category && idx === oldItem.index) return;
+            if (item.cod === cod || item.qrcode === qrcode) {
+                duplicate = true;
+            }
+        });
+    });
+
+    if (duplicate) {
+        alert('Código ou QRCode já existe');
+        return;
+    }
+
+    data[oldItem.category].splice(oldItem.index, 1);
+
+    if (!data[tipo]) {
+        data[tipo] = [];
+    }
+
+    data[tipo].push({ nome, cod, qrcode });
+    saveData();
+    closeModal('editModal');
+    prepareData();
+    sortData();
+    renderCategories();
+    populateSelects();
+}
+
+function deleteItem() {
+    const selectValue = document.getElementById('deleteSelect').value;
+    if (!selectValue) {
+        alert('Selecione um item');
+        return;
+    }
+
+    const item = JSON.parse(selectValue);
+    data[item.category].splice(item.index, 1);
+    saveData();
+    closeModal('deleteModal');
+    prepareData();
+    sortData();
+    renderCategories();
+    populateSelects();
+}
+
+window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal')) {
+        e.target.classList.remove('show');
+    }
+});
+
+loadData();
+</script>
+</body>
+</html>
